@@ -1,66 +1,94 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Laravel NLP API Project
 
-## About Laravel
+This is a Laravel-based API application that uses NLP (Natural Language Processing) services to provide advanced text-processing features, including summarization, translation, sentiment analysis, and named entity recognition. The project leverages caching with Redis to optimize performance by reducing repeated API calls and is fully containerized with Docker for consistent deployment across different environments.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Redis Caching**: Frequently requested data is cached with Redis to reduce external API requests and improve response time.
+- **Model-Specific Processing**: Support for multiple NLP models to handle tasks like text summarization, translation, sentiment analysis, and entity recognition.
+- **Dockerized Application**: The application is containerized with Docker, ensuring consistency across all environments.
+- **Rate Limiting**: Configured to manage request rates, enhancing security and preventing excessive API calls.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Example
 
-## Learning Laravel
+An example of a translation request to convert text to Arabic:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Input:**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```json
+{
+    "text": "Traveling opens your mind to new cultures and experiences. It allows you to meet people from different backgrounds, taste unique foods, and understand the world in a new way. Traveling also helps you appreciate what you have and teaches you to be adaptable."
+}
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Output:**
 
-## Laravel Sponsors
+```json
+{
+    "state": 200,
+    "message": "Data cached successfully",
+    "data": "السفر يفتح عقلك لثقافات وتجارب جديدة. يسمح لك بمقابلة أشخاص من خلفيات مختلفة ، وتذوق الأطعمة الفريدة ، وفهم العالم بطريقة جديدة. يساعدك السفر أيضًا على تقدير ما لديك ويعلمك التكيف."
+}
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Technologies and Tools
 
-### Premium Partners
+- **Laravel 11**: Used as the core framework for routing, controllers, and middleware.
+- **Redis**: Caches NLP data to improve performance and reduce repeated calls to external APIs.
+- **Docker & Docker Compose**: Containerizes the entire application for consistent environment setup.
+- **NLP Cloud API**: Integrates advanced NLP capabilities, using model-specific methods.
+- **Postman**: Simplifies testing API endpoints.
+- **Postman Documentation** [here](https://documenter.getpostman.com/view/38857071/2sAY4vhhuT) 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Installation
 
-## Contributing
+### Prerequisites
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Docker
+- Docker Compose
+- Composer
+- PHP 8.2
 
-## Code of Conduct
+### Steps
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. **Clone the repository:**
 
-## Security Vulnerabilities
+    ```bash
+    git clone https://github.com/mohamedmagdy841/nlp-api.git
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. **Navigate to the project directory:**
 
-## License
+    ```bash
+    cd nlp-api
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3. **Copy `.env.example` to `.env` and configure environment variables (API keys, Redis settings):**
+
+    ```bash
+    cp .env.example .env
+    ```
+
+4. **Build and start Docker containers:**
+
+    ```bash
+    docker-compose up --build
+    ```
+
+5. **Access the application at `http://localhost:8080`.**
+
+## Docker and Redis
+
+The project is fully containerized using Docker and Docker Compose, enabling consistent deployment. Redis is included for caching purposes, reducing load on the NLP API and enhancing performance.
+<p align="center"><a href="https://www.docker.com" target="_blank"><img src="https://github.com/user-attachments/assets/b6fcf59c-9532-477b-a030-8e54d939d456" width="300" alt="Docker Logo"></a></p>
+<p align="center"><a href="https://redis.io" target="_blank"><img src="https://github.com/user-attachments/assets/454b1985-6723-4448-a127-827c6b12a3c0" width="300" alt="Redis Logo"></a></p>
+
+## Project Demo
+
+- **Before caching**: Response times can take several seconds.
+- **After caching**: Response times drop to just milliseconds.
+
+https://github.com/user-attachments/assets/b1121ea2-da9b-4e54-8de4-1dc488e6d130
+
