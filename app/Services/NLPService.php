@@ -103,39 +103,4 @@ class NLPService
         });
     }
 
-//    public function summarizeText($text, $model = 'bart-large-cnn')
-//    {
-//        $this->initializeClient($model);
-//        try {
-//            return $this->client->summarization($text);
-//        } catch (\Exception $e) {
-//            return ['error' => 'Failed to summarize text: ' . $e->getMessage()];
-//        }
-//    }
-//
-//    public function translateText($text,$originalLang, $targetLang, $model = 'nllb-200-3-3b')
-//    {
-//        $this->initializeClient($model);
-//        try {
-//            return $this->client->translation($text, $originalLang, $targetLang);
-//        } catch (\Exception $e) {
-//            return ['error' => 'Failed to translate text: ' . $e->getMessage()];
-//        }
-//    }
-//
-//    public function analyzeSentiment($text, $model = 'distilbert-base-uncased-finetuned-sst-2-english')
-//    {
-//        $this->initializeClient($model);
-//        try {
-//            return $this->client->sentiment($text);
-//        } catch (\Exception $e) {
-//            return ['error' => 'Failed to analyze sentiment: ' . $e->getMessage()];
-//        }
-//    }
-//
-//    public function namedEntityRecognition($text, $model = 'en_core_web_lg')
-//    {
-//        $this->initializeClient($model);
-//        return $this->client->entities($text);
-//    }
 }

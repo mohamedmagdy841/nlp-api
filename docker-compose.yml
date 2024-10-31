@@ -1,0 +1,27 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: nlp-api-app
+        volumes:
+            - .:/var/www/html
+        ports:
+            - "8080:80"
+        depends_on:
+            - redis
+        networks:
+            - app-network
+
+    redis:
+        image: redis/redis-stack
+        container_name: redis-stack-app
+        ports:
+            - "6379:6379"
+            - "8001:8001"
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
