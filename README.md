@@ -2,7 +2,7 @@
 
 # Laravel NLP API Project
 
-This is a Laravel-based API application that uses NLP (Natural Language Processing) services to provide advanced text-processing features, including summarization, translation, sentiment analysis, and named entity recognition. The project leverages caching with Redis to optimize performance by reducing repeated API calls and is fully containerized with Docker for consistent deployment across different environments.
+This is a Laravel-based API application that uses NLP (Natural Language Processing) services to provide advanced text-processing features, including summarization, translation, sentiment analysis, and named entity recognition.
 
 ## Features
 
