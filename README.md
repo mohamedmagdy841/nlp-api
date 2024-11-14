@@ -4,6 +4,7 @@
 
 This is a Laravel-based API application that uses NLP (Natural Language Processing) services to provide advanced text-processing features, including summarization, translation, sentiment analysis, and named entity recognition.
 
+## Postman Documentation [here](https://documenter.getpostman.com/view/38857071/2sAY4vhhuT) 
 ## Features
 
 - **Redis Caching**: Frequently requested data is cached with Redis to reduce external API requests and improve response time.
@@ -40,7 +41,6 @@ An example of a translation request to convert text to Arabic:
 - **Docker & Docker Compose**: Containerizes the entire application for consistent environment setup.
 - **NLP Cloud API**: Integrates advanced NLP capabilities, using model-specific methods.
 - **Postman**: Simplifies testing API endpoints.
-- **Postman Documentation** [here](https://documenter.getpostman.com/view/38857071/2sAY4vhhuT) 
 
 ## Installation
 
